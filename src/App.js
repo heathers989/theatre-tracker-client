@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 import Musicals from './components/Musicals.js'
+import Form from './components/Form.js'
+import { Route } from 'react-router-dom'
+
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -13,7 +16,17 @@ if (process.env.NODE_ENV === 'development') {
 
 class App extends React.Component {
   state = {
-    musicals: []
+    musicals: [],
+    showMusicalsActive: true
+  }
+
+  showMusicals = (musical) => {
+
+    this.setState({musical, 
+      showMusicalsActive: !this.state.showMusicalsActive
+      // , getEditUserActive: false
+    }) 
+
   }
   componentDidMount(){
     this.getMusicals()
@@ -32,7 +45,11 @@ class App extends React.Component {
   return (
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
-      <Musicals musicals={this.state.musicals}/>
+      {this.state.showMusicalsActive ? <Musicals musicals={this.state.musicals} showMusicals={this.showMusicals}/>
+       : <Route path="/form" component={Form}/>}
+    
+
+     
     </div>
     );
   }
