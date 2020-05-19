@@ -8,11 +8,25 @@ img {
 
 form {
   margin: 0 auto;
-  text-align: center;
+  width: 37%;
+  /* text-align: center; */
 }
 
 input {
-  width: 25%;
+  
   display: block;
   margin: 0 auto;
 }
+
+#understudies_seen, #if_understudies, #if_stagedoor {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+label {
+  display: inline-block;
+}
+
+
+

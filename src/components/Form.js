@@ -8,7 +8,7 @@ class Form extends React.Component {
     date_of_show: "",
     if_understudies: '',
     understudies_seen: [],
-    rating: 0,
+    rating: 1,
     if_stagedoor: '',
     at_stagedoor: [],
     photos: '',
@@ -54,6 +54,8 @@ class Form extends React.Component {
 
   render() {
     return (
+      <>
+      <h2>Enter your review for {this.props.musical.name}</h2>
       <form onSubmit={this.handleSubmit}>
         <Input
           handleChange={this.handleChange}
@@ -98,14 +100,24 @@ class Form extends React.Component {
           value={this.state.if_understudies}
           id={"if_understudies"}
         />
-         {/* TO DO: use react bootstrap dropdown? */}
-        <select id="understudies_seen" multiple>
+        <div></div>
+         {/* TO DO: push selected cast members to state */}
           {this.props.musical.understudies.map(understudy => { 
-            return <option value={this.state.cast_to_see} key={understudy}> {understudy} </option>})}</select>
+            return <Input
+            handleChange={this.handleChange}
+            key={understudy}
+            name={"understudies_seen"}
+            title={understudy}
+            type={"checkbox"}
+            value={this.state.understudies_seen}
+            id={"understudies_seen"}
+          />
+            })}
+           
           <Input
           handleChange={this.handleChange}
           name={"rating"}
-          placeholder={"rate the show from 1-5"}
+          title={"rate the show from 1-5"}
           type={"number"}
           value={this.state.rating}
           id={"rating"}
@@ -127,8 +139,8 @@ class Form extends React.Component {
           value={this.state.if_stagedoor}
           id={"if_stagedoor"}
         />
-        {/* TO DO: Only show stagedoor dropdown/options if above input is yes/true  */}
-        <select id="understudies_seen" multiple>
+        {/* TO DO: Only show stagedoor dropdown/options if above input is yes/true, change to checkboxes  */}
+        <select id="at_stagedoor" multiple>
           {this.props.musical.understudies.map(understudy => { 
             return <option value={this.state.at_stagedoor} key={understudy}> {understudy} </option>})}
             {this.props.musical.cast.map(castMember => { 
@@ -153,6 +165,7 @@ class Form extends React.Component {
         />
         <input type="submit" value={"Add Your Review"}/>
       </form>
+      </>
     );
   }
 }
