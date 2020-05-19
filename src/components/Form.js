@@ -3,14 +3,17 @@ import Input from "./Input.js";
 
 class Form extends React.Component {
   state = {
-    name: "",
-    hometown: "",
-    interests: "",
-    country: "",
-    city: "",
-    landmarks: "",
-    season: "",
-    image: ""
+    show_seen: this.props.musical.name,
+    cast_to_see: '',
+    date_of_show: "",
+    if_understudies: '',
+    understudies_seen: [],
+    rating: 0,
+    if_stagedoor: '',
+    at_stagedoor: [],
+    photos: '',
+    comments: '',
+    reviewer_name: ''
   };
 
 
@@ -21,33 +24,32 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
    event.preventDefault()
-   const userinfo = {
-    name: this.state.name,
-    interests: this.state.interests,
-    hometown: this.state.hometown,
-    country: this.state.country,
-    city: this.state.city,
-    landmarks: this.state.landmarks,
-    season: this.state.season,
-    image: this.state.image
-  }
-  if (this.props.user) {userinfo.id = this.props.user.id}
-  else {console.log("no user here")}
-
-   this.props.handleSubmit(event, userinfo)
-   this.setState({name: '', interests: '', hometown: '', country: '', city: '', landmarks: '', season: '', image: ''})
+   const reviewInfo = {
+    show_seen: this.props.musical,
+    cast_to_see: this.state.cast_to_see,
+    date_of_show: this.state.date_of_show,
+    if_understudies: this.state.if_understudies,
+    understudies_seen: this.state.understudies_seen,
+    rating: this.state.rating,
+    if_stagedoor: this.state.if_stagedoor,
+    at_stagedoor: this.state.at_stagedoor,
+    photos: this.state.photos,
+    comments: this.state.comments,
+    reviewer_name: this.state.reviewer_name
   }
 
-  componentDidMount() {
-    if (this.props.user) {
-      const { name, interests, hometown, id } = this.props.user;
-      this.setState({
-        name: name || "",
-        interests: interests || "",
-        hometown: hometown || "",
-        id: id || "",
-      });
-    }
+   this.props.handleSubmit(event, reviewInfo)
+   this.setState({ show_seen: this.props.musical,
+    cast_to_see: '',
+    date_of_show: '',
+    if_understudies: '',
+    understudies_seen: [],
+    rating: '',
+    if_stagedoor: '',
+    at_stagedoor: [],
+    photos: '',
+    comments: '',
+    reviewer_name: ''})
   }
 
   render() {
@@ -55,69 +57,101 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <Input
           handleChange={this.handleChange}
-          name={"name"}
+          name={"reviewer_name"}
           placeholder={"Your name"}
           type={"text"}
-          value={this.state.name}
-          id={"name"}
+          value={this.state.reviewer_name}
+          id={"reviewer_name"}
+        />
+        {/* TO DO: use react bootstrap dropdown? */}
+        <label htmlFor="cast_to_see">Cast member you were most excited to see:</label>
+        <select id="cast_to_see">
+          {this.props.musical.cast.map(castMember => { 
+            return <option value={this.state.cast_to_see} key={castMember}>{castMember}</option>})}
+        </select>
+        {/* TO DO: pass selected cast member to state */}
+        <Input
+          handleChange={this.handleChange}
+          name={"date_of_show"}
+          placeholder={"Date of show (yyyy-mm-dd)"}
+          type={"text"}
+          value={this.state.date_of_show}
+          id={"date_of_show"}
+        />
+        {/* TO DO: set radio buttons to be associated with boolean values
+          if true, show understudies list
+         */}
+        <label htmlFor="if_understudies">Did you see any understudies at this performance?</label><br/>
+        <Input
+          handleChange={this.handleChange}
+          name={"if_understudies"}
+          title={"yes"}
+          type={"radio"}
+          value={this.state.if_understudies}
+          id={"if_understudies"}
         />
         <Input
           handleChange={this.handleChange}
-          name={"interests"}
-          placeholder={"Your interests"}
-          type={"text"}
-          value={this.state.interests}
-          id={"interests"}
+          name={"if_understudies"}
+          title={"no"}
+          type={"radio"}
+          value={this.state.if_understudies}
+          id={"if_understudies"}
         />
-        <Input
-          handleChange={this.handleChange}
-          name={"hometown"}
-          placeholder={"Where you're from"}
-          type={"text"}
-          value={this.state.hometown}
-          id={"hometown"}
-        />
-        <Input
-          handleChange={this.handleChange}
-          name={"country"}
-          placeholder={"Country to visit"}
-          type={"text"}
-          value={this.state.country}
-          id={"country"}
-        />
-         <Input
-          handleChange={this.handleChange}
-          name={"city"}
-          placeholder={"City to visit"}
-          type={"text"}
-          value={this.state.city}
-          id={"city"}
-        />
+         {/* TO DO: use react bootstrap dropdown? */}
+        <select id="understudies_seen" multiple>
+          {this.props.musical.understudies.map(understudy => { 
+            return <option value={this.state.cast_to_see} key={understudy}> {understudy} </option>})}</select>
           <Input
           handleChange={this.handleChange}
-          name={"landmarks"}
-          placeholder={"Landmarks to see"}
-          type={"text"}
-          value={this.state.landmarks}
-          id={"landmarks"}
+          name={"rating"}
+          placeholder={"rate the show from 1-5"}
+          type={"number"}
+          value={this.state.rating}
+          id={"rating"}
         />
-         <Input
+         <label htmlFor="if_stagedoor">Did you go to the stage door after this performance? (select all cast members that signed)</label><br/>
+        <Input
           handleChange={this.handleChange}
-          name={"season"}
-          placeholder={"Season to visit"}
-          type={"text"}
-          value={this.state.season}
-          id={"season"}
+          name={"if_stagedoor"}
+          title={"yes"}
+          type={"radio"}
+          value={this.state.if_stagedoor}
+          id={"if_stagedoor"}
         />
         <Input
           handleChange={this.handleChange}
-          name={"image"}
-          placeholder={"image link"}
-          type={"text"}
-          value={this.state.image}
-          id={"image"}
+          name={"if_stagedoor"}
+          title={"no"}
+          type={"radio"}
+          value={this.state.if_stagedoor}
+          id={"if_stagedoor"}
         />
-        <input type="submit" value={this.props.user ? "update" : "share your travel dreams"}/>
+        {/* TO DO: Only show stagedoor dropdown/options if above input is yes/true  */}
+        <select id="understudies_seen" multiple>
+          {this.props.musical.understudies.map(understudy => { 
+            return <option value={this.state.at_stagedoor} key={understudy}> {understudy} </option>})}
+            {this.props.musical.cast.map(castMember => { 
+            return <option value={this.state.at_stagedoor} key={castMember}> {castMember} </option>})}
+            </select>
+            {/* TO DO: user should be able to upload photos */}
+        <Input
+          handleChange={this.handleChange}
+          name={"photos"}
+          placeholder={"link to photos from the show or stagedoor"}
+          type={"text"}
+          value={this.state.photos}
+          id={"photos"}
+        />
+        <Input
+          handleChange={this.handleChange}
+          name={"comments"}
+          placeholder={"any comments regarding the performance"}
+          type={"text"}
+          value={this.state.comments}
+          id={"comments"}
+        />
+        <input type="submit" value={"Add Your Review"}/>
       </form>
     );
   }

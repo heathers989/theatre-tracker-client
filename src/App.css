@@ -5,3 +5,14 @@
 img {
   max-height: 180px;
 }
+
+form {
+  margin: 0 auto;
+  text-align: center;
+}
+
+input {
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+}

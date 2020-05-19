@@ -28,6 +28,38 @@ class App extends React.Component {
     }) 
 
   }
+
+  handleAddReview = (event, musicalId, reviewInfo) => {
+    event.preventDefault()
+    console.log("musical id for review being created: " + musicalId)
+   //  event.persist()
+    fetch(`${baseURL}/musicals/${musicalId}/reviews`, {
+     body: JSON.stringify(
+       { 
+       show_seen: reviewInfo.show_seen,
+       cast_to_see: reviewInfo.cast_to_see,
+       date_of_show: reviewInfo.date_of_show,
+       if_understudies: reviewInfo.if_understudies,
+       understudies_seen: reviewInfo.understudies_seen,
+       rating: reviewInfo.rating,
+       if_stagedoor: reviewInfo.if_stagedoor,
+       at_stagedoor: reviewInfo.at_stagedoor,
+       photos: reviewInfo.photos,
+       comments: reviewInfo.comments,
+       reviewer_name: reviewInfo.reviewer_name
+     }),
+     method: 'POST',
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json'
+     }
+    })
+    .then(review => review.json())
+    this.getMusicals()
+    // .then(jsonedLocation => {jsonedUser.locations = [jsonedLocation]; console.log(jsonedUser)})
+  }
+
+
   componentDidMount(){
     this.getMusicals()
   }
@@ -46,7 +78,11 @@ class App extends React.Component {
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
       {this.state.showMusicalsActive ? <Musicals musicals={this.state.musicals} showMusicals={this.showMusicals}/>
-       : <Route path="/form" component={Form}/>}
+       : <Route path="/form" render={() => {
+         return (
+           <Form handleSubmit={this.handleAddReview} musical={this.state.musical}/>
+         )
+         }} /> }
     
 
      
