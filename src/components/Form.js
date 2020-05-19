@@ -6,10 +6,10 @@ class Form extends React.Component {
     show_seen: this.props.musical.name,
     cast_to_see: '',
     date_of_show: "",
-    if_understudies: '',
+    if_understudies: false,
     understudies_seen: [],
     rating: 1,
-    if_stagedoor: '',
+    if_stagedoor: false,
     at_stagedoor: [],
     photos: '',
     comments: '',
@@ -21,6 +21,12 @@ class Form extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
     console.log(this.state)
   };
+
+  checkUnderstudiesTrue = () => {
+    console.log("checking for understudies")
+      this.setState({if_understudies: true })
+      return true
+  }
 
   handleSubmit = (event) => {
    event.preventDefault()
@@ -39,7 +45,8 @@ class Form extends React.Component {
   }
 
    this.props.handleSubmit(event, reviewInfo)
-   this.setState({ show_seen: this.props.musical,
+   this.setState({ 
+    show_seen: this.props.musical,
     cast_to_see: '',
     date_of_show: '',
     if_understudies: '',
@@ -80,17 +87,18 @@ class Form extends React.Component {
           value={this.state.date_of_show}
           id={"date_of_show"}
         />
+       
         {/* TO DO: set radio buttons to be associated with boolean values
           if true, show understudies list
          */}
-        <label htmlFor="if_understudies">Did you see any understudies at this performance?</label><br/>
-        <Input
-          handleChange={this.handleChange}
+        <label htmlFor="if_understudies">Did you see any understudies at this performance? (select all)</label><br/>
+        <Input onClick={this.checkUnderstudiesTrue}
+          // handleChange={this.handleChange}
           name={"if_understudies"}
           title={"yes"}
           type={"radio"}
           value={this.state.if_understudies}
-          id={"if_understudies"}
+          id={"if_understudies_true"}
         />
         <Input
           handleChange={this.handleChange}
@@ -98,21 +106,26 @@ class Form extends React.Component {
           title={"no"}
           type={"radio"}
           value={this.state.if_understudies}
-          id={"if_understudies"}
+          id={"if_understudies_false"}
         />
-        <div></div>
+      <div></div>
+      {this.state.if_understudies === true ? 
+      this.props.musical.understudies.map(understudy => { 
+          return <Input
+          handleChange={this.handleChange}
+          key={understudy}
+          name={"understudies_seen"}
+          title={understudy}
+          type={"checkbox"}
+          value={this.state.understudies_seen}
+          id={"understudies_seen"}
+        /> 
+          }) : <div></div>}
+         
+
+        
          {/* TO DO: push selected cast members to state */}
-          {this.props.musical.understudies.map(understudy => { 
-            return <Input
-            handleChange={this.handleChange}
-            key={understudy}
-            name={"understudies_seen"}
-            title={understudy}
-            type={"checkbox"}
-            value={this.state.understudies_seen}
-            id={"understudies_seen"}
-          />
-            })}
+         <div></div>
            
           <Input
           handleChange={this.handleChange}
