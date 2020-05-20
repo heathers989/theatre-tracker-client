@@ -17,11 +17,6 @@ class Form extends React.Component {
     reviewer_name: ''
   };
 
-// stageDoorCastAll = () => {
-//   let stageDoorCast = this.props.musical.understudies.concat(this.props.musical.cast)
-// console.log(stageDoorCast)
-// }
-
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value });
@@ -72,7 +67,22 @@ class Form extends React.Component {
   }
 
   addRemoveStageDoor = (sdCastMember, index) => {
+    let copyStageDoor = [...this.state.at_stagedoor]
+  if (document.getElementById("stagedoor"+index).checked){
     console.log("saw " + sdCastMember + " at the stage door")
+    copyStageDoor.unshift(sdCastMember)
+    console.log(copyStageDoor)
+    this.setState({
+      at_stagedoor: copyStageDoor
+    })
+  } else {
+    console.log("removing " + sdCastMember)
+    copyStageDoor = copyStageDoor.filter((n) => {return n !== sdCastMember})
+    console.log(copyStageDoor)
+    this.setState({
+      at_stagedoor: copyStageDoor
+    })
+  }
   }
 
   handleSubmit = (event) => {
