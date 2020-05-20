@@ -18,7 +18,7 @@ input {
   margin: 0 auto;
 }
 
-#understudies_seen, #if_understudies, #if_stagedoor {
+.understudies_seen, #if_understudies, #if_stagedoor {
   display: inline-block;
   margin-right: 10px;
   margin-left: 5px;

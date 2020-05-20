@@ -23,10 +23,35 @@ class Form extends React.Component {
   };
 
   checkUnderstudiesTrue = () => {
-    console.log("checking for understudies")
+    console.log("saw understudies")
       this.setState({if_understudies: true })
       return true
   }
+
+  checkUnderstudiesFalse = () => {
+    console.log("did not see understudies")
+      this.setState({if_understudies: false, understudies_seen: [] })
+      return false
+  }
+
+addRemoveUnderstudy = (understudy, index) => {
+  let copyUnderstudies = [...this.state.understudies_seen]
+  if (document.getElementById(index).checked){
+    console.log("adding " + understudy)
+    copyUnderstudies.unshift(understudy)
+    console.log(copyUnderstudies)
+    this.setState({
+      understudies_seen: copyUnderstudies
+    })
+  } else {
+    console.log("removing " + understudy)
+    copyUnderstudies = copyUnderstudies.filter((n) => {return n !== understudy})
+    console.log(copyUnderstudies)
+    this.setState({
+      understudies_seen: copyUnderstudies
+    })
+  }
+}
 
   handleSubmit = (event) => {
    event.preventDefault()
@@ -101,7 +126,8 @@ class Form extends React.Component {
           id={"if_understudies_true"}
         />
         <Input
-          handleChange={this.handleChange}
+          // handleChange={this.handleChange}
+          onClick={this.checkUnderstudiesFalse}
           name={"if_understudies"}
           title={"no"}
           type={"radio"}
@@ -110,15 +136,17 @@ class Form extends React.Component {
         />
       <div></div>
       {this.state.if_understudies === true ? 
-      this.props.musical.understudies.map(understudy => { 
+      this.props.musical.understudies.map((understudy, index) => { 
           return <Input
-          handleChange={this.handleChange}
+          // handleChange={this.handleChange}
+          onClick={() => this.addRemoveUnderstudy(understudy, index)}
           key={understudy}
-          name={"understudies_seen"}
+          name={index}
           title={understudy}
           type={"checkbox"}
+          className={"understudies_seen"}
           value={this.state.understudies_seen}
-          id={"understudies_seen"}
+          id={index}
         /> 
           }) : <div></div>}
          

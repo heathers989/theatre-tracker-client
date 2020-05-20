@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Input = props => {
-  const {handleChange, name, placeholder, title, type, value, onClick} = props
+  const {handleChange, name, className, placeholder, title, type, value, onClick} = props
     return (
       <>
         <label htmlFor={name}>{title}</label>
@@ -13,6 +13,7 @@ const Input = props => {
           onChange={handleChange}
           placeholder={placeholder}
           onClick={onClick}
+          className={className}
         />
       </>
     )
