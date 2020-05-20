@@ -16,12 +16,17 @@ input {
   
   display: block;
   margin: 0 auto;
+  width: max-content;
 }
 
 .understudies_seen, #if_understudies, #if_stagedoor {
   display: inline-block;
   margin-right: 10px;
   margin-left: 5px;
+}
+
+#date_of_show {
+  width: 150px;
 }
 
 label {

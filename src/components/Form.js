@@ -99,9 +99,10 @@ addRemoveUnderstudy = (understudy, index) => {
         />
         {/* TO DO: use react bootstrap dropdown? */}
         <label htmlFor="cast_to_see">Cast member you were most excited to see:</label>
-        <select id="cast_to_see">
+        <select value={this.state.cast_to_see} onChange={this.handleChange} id="cast_to_see">
+          <option value="None">--Select--</option>
           {this.props.musical.cast.map(castMember => { 
-            return <option value={this.state.cast_to_see} key={castMember}>{castMember}</option>})}
+            return <option value={castMember} key={castMember}>{castMember}</option>})}
         </select>
         {/* TO DO: pass selected cast member to state */}
         <Input
