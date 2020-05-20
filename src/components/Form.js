@@ -2,6 +2,7 @@ import React from "react";
 import Input from "./Input.js";
 
 class Form extends React.Component {
+  stageDoorCast = this.props.musical.cast.concat(this.props.musical.understudies)
   state = {
     show_seen: this.props.musical.name,
     cast_to_see: '',
@@ -15,6 +16,11 @@ class Form extends React.Component {
     comments: '',
     reviewer_name: ''
   };
+
+// stageDoorCastAll = () => {
+//   let stageDoorCast = this.props.musical.understudies.concat(this.props.musical.cast)
+// console.log(stageDoorCast)
+// }
 
 
   handleChange = (event) => {
@@ -34,9 +40,21 @@ class Form extends React.Component {
       return false
   }
 
-addRemoveUnderstudy = (understudy, index) => {
+  checkStagedoorTrue = () => {
+    console.log("visited the stage door")
+      this.setState({if_stagedoor: true })
+      return true
+  }
+
+  checkStagedoorFalse = () => {
+    console.log("did not visit the stage door")
+      this.setState({if_stagedoor: false, at_stagedoor: [] })
+      return false
+  }
+
+  addRemoveUnderstudy = (understudy, index) => {
   let copyUnderstudies = [...this.state.understudies_seen]
-  if (document.getElementById(index).checked){
+  if (document.getElementById("understudy"+index).checked){
     console.log("adding " + understudy)
     copyUnderstudies.unshift(understudy)
     console.log(copyUnderstudies)
@@ -51,7 +69,11 @@ addRemoveUnderstudy = (understudy, index) => {
       understudies_seen: copyUnderstudies
     })
   }
-}
+  }
+
+  addRemoveStageDoor = (sdCastMember, index) => {
+    console.log("saw " + sdCastMember + " at the stage door")
+  }
 
   handleSubmit = (event) => {
    event.preventDefault()
@@ -87,6 +109,7 @@ addRemoveUnderstudy = (understudy, index) => {
   render() {
     return (
       <>
+      
       <h2>Enter your review for {this.props.musical.name}</h2>
       <form onSubmit={this.handleSubmit}>
         <Input
@@ -140,19 +163,16 @@ addRemoveUnderstudy = (understudy, index) => {
       this.props.musical.understudies.map((understudy, index) => { 
           return <Input
           // handleChange={this.handleChange}
-          onClick={() => this.addRemoveUnderstudy(understudy, index)}
+          onClick={() => this.addRemoveStageDoor(understudy, index)}
           key={understudy}
-          name={index}
+          name={"stagedoor"+index}
           title={understudy}
           type={"checkbox"}
           className={"understudies_seen"}
           value={this.state.understudies_seen}
-          id={index}
+          id={"stagedoor"+index}
         /> 
           }) : <div></div>}
-         
-
-        
          {/* TO DO: push selected cast members to state */}
          <div></div>
            
@@ -164,9 +184,10 @@ addRemoveUnderstudy = (understudy, index) => {
           value={this.state.rating}
           id={"rating"}
         />
-         <label htmlFor="if_stagedoor">Did you go to the stage door after this performance? (select all cast members that signed)</label><br/>
+         <label htmlFor="if_stagedoor">Did you visit the stage door after this performance? (select all cast members that signed)</label><br/>
         <Input
-          handleChange={this.handleChange}
+          onClick={this.checkStagedoorTrue}
+          // handleChange={this.handleChange}
           name={"if_stagedoor"}
           title={"yes"}
           type={"radio"}
@@ -174,21 +195,37 @@ addRemoveUnderstudy = (understudy, index) => {
           id={"if_stagedoor"}
         />
         <Input
-          handleChange={this.handleChange}
+          onClick={this.checkStagedoorFalse}
+          // handleChange={this.handleChange}
           name={"if_stagedoor"}
           title={"no"}
           type={"radio"}
           value={this.state.if_stagedoor}
           id={"if_stagedoor"}
         />
-        {/* TO DO: Only show stagedoor dropdown/options if above input is yes/true, change to checkboxes  */}
-        <select id="at_stagedoor" multiple>
-          {this.props.musical.understudies.map(understudy => { 
-            return <option value={this.state.at_stagedoor} key={understudy}> {understudy} </option>})}
-            {this.props.musical.cast.map(castMember => { 
-            return <option value={this.state.at_stagedoor} key={castMember}> {castMember} </option>})}
-            </select>
+        <div></div>
+
+          {/* TO DO: add checked boxes to state  */}
+      {this.state.if_stagedoor === true ? 
+      
+       this.stageDoorCast.map((sdCastMember, index) => { 
+         return <Input
+             // handleChange={this.handleChange}
+             onClick={() => this.addRemoveStageDoor(sdCastMember, index)}
+             key={sdCastMember}
+             name={"stagedoor"+index}
+             title={sdCastMember}
+             type={"checkbox"}
+             className={"at_stagedoor"}
+             value={this.state.at_stagedoor}
+             id={"stagedoor"+index}
+           /> 
+        })
+
+          : <div></div> }
+        
             {/* TO DO: user should be able to upload photos */}
+            <div></div>
         <Input
           handleChange={this.handleChange}
           name={"photos"}
