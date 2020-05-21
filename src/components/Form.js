@@ -87,6 +87,7 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
    event.preventDefault()
+   let musicalId = this.props.musical.id
    const reviewInfo = {
     show_seen: this.props.musical,
     cast_to_see: this.state.cast_to_see,
@@ -101,15 +102,15 @@ class Form extends React.Component {
     reviewer_name: this.state.reviewer_name
   }
 
-   this.props.handleSubmit(event, reviewInfo)
+   this.props.handleSubmit(event, musicalId, reviewInfo)
    this.setState({ 
     show_seen: this.props.musical,
     cast_to_see: '',
     date_of_show: '',
-    if_understudies: '',
+    if_understudies: false,
     understudies_seen: [],
-    rating: '',
-    if_stagedoor: '',
+    rating: 1,
+    if_stagedoor: false,
     at_stagedoor: [],
     photos: '',
     comments: '',

@@ -25,6 +25,16 @@ input {
   margin-left: 5px;
 }
 
+.musicalsindex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onemusical {
+  margin: 10px;
+}
+
 #date_of_show {
   width: 150px;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Musicals from './components/Musicals.js'
 import Form from './components/Form.js'
+// import Reviews from './components/Reviews.js'
 import { Route } from 'react-router-dom'
 
 
@@ -77,13 +78,15 @@ class App extends React.Component {
   return (
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
+      
       {this.state.showMusicalsActive ? <Musicals musicals={this.state.musicals} showMusicals={this.showMusicals}/>
        : <Route path="/form" render={() => {
          return (
            <Form handleSubmit={this.handleAddReview} musical={this.state.musical}/>
          )
          }} /> }
-    
+
+       
 
      
     </div>
