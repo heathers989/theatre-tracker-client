@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -46,11 +46,12 @@ class Reviews extends React.Component {
                </div>
 
            ))}
-            
-            
+            <Link to="/musicals">
+            <button onClick={() => this.props.toggleMusicals()}>Back to Musicals Index</button>
+            </Link>
             </>
         )
-        }
+      }
     }
 
 export default Reviews
