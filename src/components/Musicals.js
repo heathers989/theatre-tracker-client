@@ -33,7 +33,7 @@ function Musicals(props) {
     ))}
           </div>
         </div>
-        <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals()} musicals={musicals}/>}/>
+        <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals} toggleMusicalsNow={toggleMusicals()} musicals={musicals}/>}/>
       </>
     )
   }

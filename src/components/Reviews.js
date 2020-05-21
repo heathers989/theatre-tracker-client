@@ -16,7 +16,8 @@ class Reviews extends React.Component {
     // musicalId = (this.props.match.params.id);
 
     state = {
-        currentMusical: {}
+        currentMusical: {},
+        reviews: []
     }
 
     componentDidMount(){
@@ -28,17 +29,23 @@ class Reviews extends React.Component {
     .then(response => { 
       return response.json()},
       err => console.log(err))
-    .then(json => this.setState({currentMusical: json}),
-    console.log("get musicals is running"),
+    .then(json => this.setState({currentMusical: json, reviews: json.reviews}),
+    console.log("get musical is running"),
     err => console.log(err))
   }
 
     render(){
-        console.log(this.state.currentMusical)
+        console.log(this.state.currentMusical.reviews)
         return (
             <>
            <h1>Reviews for {this.state.currentMusical.name}</h1>
            
+           {this.state.reviews.map(review => (
+               <div key={review.id}>
+                   <div>Review by: {review.reviewer_name}</div>
+               </div>
+
+           ))}
             
             
             </>
