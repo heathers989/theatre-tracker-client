@@ -4,11 +4,12 @@ import Reviews from './Reviews.js'
 import { Route } from 'react-router-dom'
 
 function Musicals(props) {
-  let {musicals, showMusicals} = props;
-  // let hideMusicals = () => {
-  //   let hide = document.getElementById("musicals_container").style.display = "none"
-  //   return hide
+  let {musicals, showMusicals, toggleMusicals} = props;
+
+  // function hideMusicals() {
+  //   document.getElementById("musicals_container").setAttribute("id", "hide")
   // }
+
     return (
       <>
       <div id="musicals_container">
@@ -32,7 +33,7 @@ function Musicals(props) {
     ))}
           </div>
         </div>
-        <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} musicals={musicals}/>}/>
+        <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals()} musicals={musicals}/>}/>
       </>
     )
   }

@@ -30,6 +30,17 @@ class App extends React.Component {
 
   }
 
+  toggleMusicals = () => {
+    let toHide = document.getElementById("musicals_container")
+    let toShow = document.getElementById("hide")
+   if (toHide) {
+      toHide.setAttribute("id", "hide")
+   } else if (toShow) {
+     toShow.setAttribute("id", "musicals_container")
+   }
+    
+  }
+
   handleAddReview = (event, musicalId, reviewInfo) => {
     event.preventDefault()
     console.log("musical id for review being created: " + musicalId)
@@ -79,7 +90,7 @@ class App extends React.Component {
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
       
-      {this.state.showMusicalsActive ? <Musicals musicals={this.state.musicals} showMusicals={this.showMusicals}/>
+      {this.state.showMusicalsActive ? <Musicals toggleMusicals={this.toggleMusicals} musicals={this.state.musicals} showMusicals={this.showMusicals}/>
        : <Route path="/form" render={() => {
          return (
            <Form handleSubmit={this.handleAddReview} musical={this.state.musical}/>

@@ -3,7 +3,7 @@
 }
 
 img {
-  max-height: 180px;
+  height: 180px;
 }
 
 form {
@@ -37,6 +37,10 @@ input {
 
 #date_of_show {
   width: 150px;
+}
+
+#hide {
+  display: none;
 }
 
 /* #comments {
