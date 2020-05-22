@@ -12,6 +12,21 @@ form {
   /* text-align: center; */
 }
 
+table {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+td, th {
+  padding-right: 15px;
+}
+
+#comments {
+  text-align: center;
+  width: 15%;
+}
+
 input {
   
   display: block;
