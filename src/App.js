@@ -47,19 +47,18 @@ class App extends React.Component {
    //  event.persist()
     fetch(`${baseURL}/musicals/${musicalId}/reviews`, {
      body: JSON.stringify(
-       { 
-       show_seen: reviewInfo.show_seen,
-       cast_to_see: reviewInfo.cast_to_see,
-       date_of_show: reviewInfo.date_of_show,
-       if_understudies: reviewInfo.if_understudies,
-       understudies_seen: reviewInfo.understudies_seen,
-       rating: reviewInfo.rating,
-       if_stagedoor: reviewInfo.if_stagedoor,
-       at_stagedoor: reviewInfo.at_stagedoor,
-       photos: reviewInfo.photos,
-       comments: reviewInfo.comments,
-       reviewer_name: reviewInfo.reviewer_name
-     }),
+      {show_seen: reviewInfo.show_seen,
+         cast_to_see: reviewInfo.cast_to_see,
+         date_of_show: reviewInfo.date_of_show,
+         if_understudies: reviewInfo.if_understudies,
+         understudies_seen: "," + reviewInfo.understudies_seen + ",",
+         rating: reviewInfo.rating,
+         if_stagedoor: reviewInfo.if_stagedoor,
+         at_stagedoor: "," + reviewInfo.at_stagedoor + ",",
+         photos: reviewInfo.photos,
+         comments: reviewInfo.comments,
+         reviewer_name: reviewInfo.reviewer_name
+      }),
      method: 'POST',
      headers: {
        'Accept': 'application/json, text/plain, */*',

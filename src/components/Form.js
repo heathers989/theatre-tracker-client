@@ -63,6 +63,7 @@ class Form extends React.Component {
     this.setState({
       understudies_seen: copyUnderstudies
     })
+    console.log(this.state.understudies_seen)
   }
   }
 
@@ -75,6 +76,7 @@ class Form extends React.Component {
     this.setState({
       at_stagedoor: copyStageDoor
     })
+    console.log(this.state.at_stagedoor)
   } else {
     console.log("removing " + sdCastMember)
     copyStageDoor = copyStageDoor.filter((n) => {return n !== sdCastMember})
@@ -89,7 +91,7 @@ class Form extends React.Component {
    event.preventDefault()
    let musicalId = this.props.musical.id
    const reviewInfo = {
-    show_seen: this.props.musical,
+    show_seen: this.props.musical.name,
     cast_to_see: this.state.cast_to_see,
     date_of_show: this.state.date_of_show,
     if_understudies: this.state.if_understudies,
@@ -101,10 +103,10 @@ class Form extends React.Component {
     comments: this.state.comments,
     reviewer_name: this.state.reviewer_name
   }
-
+  console.log(reviewInfo)
    this.props.handleSubmit(event, musicalId, reviewInfo)
    this.setState({ 
-    show_seen: this.props.musical,
+    show_seen: this.props.musical.name,
     cast_to_see: '',
     date_of_show: '',
     if_understudies: false,
@@ -174,14 +176,14 @@ class Form extends React.Component {
       this.props.musical.understudies.map((understudy, index) => { 
           return <Input
           // handleChange={this.handleChange}
-          onClick={() => this.addRemoveStageDoor(understudy, index)}
+          onClick={() => this.addRemoveUnderstudy(understudy, index)}
           key={understudy}
-          name={"stagedoor"+index}
+          name={"understudy"+index}
           title={understudy}
           type={"checkbox"}
           className={"understudies_seen"}
           value={this.state.understudies_seen}
-          id={"stagedoor"+index}
+          id={"understudy"+index}
         /> 
           }) : <div></div>}
          {/* TO DO: push selected cast members to state */}

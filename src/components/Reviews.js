@@ -35,13 +35,12 @@ class Reviews extends React.Component {
   }
 
     render(){
-        // console.log(this.state.currentMusical.reviews)
         return (
             <>
            <h1>Reviews for {this.state.currentMusical.name}</h1>
 
            <table>
-        <tbody>
+        <tbody key="tbody">
         <tr>
           <th>Review by:</th>
           <th>Date of performance:</th> 
