@@ -24,22 +24,28 @@ class Reviews extends React.Component {
         this.getMusical()
     }
 
+    // componentDidUpdate(){
+    //     this.getMusical()
+    // }
+
  getMusical () {
     fetch(`${baseURL}/musicals/${this.props.match.params.id}`)
     .then(response => { 
       return response.json()},
       err => console.log(err))
     .then(json => this.setState({currentMusical: json, reviews: json.reviews}),
-    console.log("get musical is running"),
+    console.log("get musical is running", this.props),
     err => console.log(err))
   }
 
   handleShowSelect = () => {
     // add additional shows as they're added to app
     if (this.state.currentMusical.name === "Moulin Rouge! The Musical"){
-    //   console.log("we want to change the background")
       document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
-   } 
+   } else if (this.state.currentMusical.name === "Waitress"){
+    // console.log("we want to change the background")
+    document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
+ }
    else {
     document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
    }
@@ -52,8 +58,7 @@ class Reviews extends React.Component {
     render(){
         return (
             <>
-            {/* {this.state.currentMusical.name === "Moulin Rouge! The Musical" ? document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
-: null} */}
+            
             {this.handleShowSelect()}
             <div id="reviews_container">
            <h2>Reviews for {this.state.currentMusical.name}</h2>
@@ -89,7 +94,7 @@ class Reviews extends React.Component {
     </table>
            
           
-            <Link to="/musicals">
+            <Link to="/">
             <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
             </Link>
             </div>

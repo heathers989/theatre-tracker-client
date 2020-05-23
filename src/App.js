@@ -4,6 +4,8 @@ import Musicals from './components/Musicals.js'
 import Form from './components/Form.js'
 // import Reviews from './components/Reviews.js'
 import { Route } from 'react-router-dom'
+// import { withRouter } from "react-router";
+
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -27,10 +29,14 @@ class App extends React.Component {
       showMusicalsActive: !this.state.showMusicalsActive
       // , getEditUserActive: false
     }) 
-
   }
 
+  // showOne = (musical) => {
+  //   this.setState({currentMusical: musical})
+  // }
+
   toggleMusicals = () => {
+    //hides musicals index component
     let toHide = document.getElementById("musicals_container")
     let toShow = document.getElementById("hide")
    if (toHide) {
@@ -44,7 +50,6 @@ class App extends React.Component {
   handleAddReview = (event, musicalId, reviewInfo) => {
     event.preventDefault()
     console.log("musical id for review being created: " + musicalId)
-   //  event.persist()
     fetch(`${baseURL}/musicals/${musicalId}/reviews`, {
      body: JSON.stringify(
       {show_seen: reviewInfo.show_seen,
@@ -65,9 +70,12 @@ class App extends React.Component {
        'Content-Type': 'application/json'
      }
     })
-    .then(review => review.json())
+    .then(review => {
+      review.json()
+      // this.props.history.push('/musicals/1')
+    })
     this.getMusicals()
-    // .then(jsonedLocation => {jsonedUser.locations = [jsonedLocation]; console.log(jsonedUser)})
+    alert("Your review has been added.")
   }
 
 
@@ -85,14 +93,15 @@ class App extends React.Component {
     err => console.log(err))
   }
   render(){
+    // console.log("add review is running", this.props)
   return (
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
       
       {this.state.showMusicalsActive ? <Musicals toggleMusicals={this.toggleMusicals} musicals={this.state.musicals} showMusicals={this.showMusicals}/>
-       : <Route path="/form" render={() => {
+       : <Route path="/form" render={(props) => {
          return (
-           <Form handleSubmit={this.handleAddReview} musical={this.state.musical}/>
+           <Form {...props} handleSubmit={this.handleAddReview} musical={this.state.musical}/>
          )
          }} /> }
 

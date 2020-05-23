@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./Input.js";
+// import { Link } from 'react-router-dom'
 
 class Form extends React.Component {
   stageDoorCast = this.props.musical.cast.concat(this.props.musical.understudies)
@@ -18,15 +19,22 @@ class Form extends React.Component {
   };
 
   handleShowSelect = () => {
-    // let formcontainer = document.getElementById("formcontainer")
+    //sets background image based on show selected
     if (this.props.musical.name === "Moulin Rouge! The Musical"){
-      console.log("we want to change the background")
+      // console.log("we want to change the background")
       document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
-   } 
-  //  else if (toShow) {
-  //    toShow.setAttribute("id", "musicals_container")
-  //  }
+   } else if (this.props.musical.name === "Waitress"){
+    // console.log("we want to change the background")
+    document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
+ } else {
+    document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+   }
     }
+
+  resetBackground = () => {
+    //sets background image to default
+      document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+  }
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value });
@@ -113,7 +121,7 @@ class Form extends React.Component {
     comments: this.state.comments,
     reviewer_name: this.state.reviewer_name
   }
-  console.log(reviewInfo)
+  console.log("props for form", this.props)
    this.props.handleSubmit(event, musicalId, reviewInfo)
    this.setState({ 
     show_seen: this.props.musical.name,
@@ -281,6 +289,9 @@ class Form extends React.Component {
         <div></div>
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
+      {/* <Link to={{pathname: `/musicals/${this.props.musical.id}`}}>
+            <button onClick={() => this.props.showOne(this.props.musical)}>See reviews for this musical </button>
+            </Link> */}
       </div>
     );
   }

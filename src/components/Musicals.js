@@ -6,9 +6,7 @@ import { Route } from 'react-router-dom'
 function Musicals(props) {
   let {musicals, showMusicals, toggleMusicals} = props;
 
-  // function hideMusicals() {
-  //   document.getElementById("musicals_container").setAttribute("id", "hide")
-  // }
+  // console.log("passing props in musicals component", props)
 
     return (
       <>
@@ -19,7 +17,6 @@ function Musicals(props) {
     {musicals.map(musical => (
     <div className="onemusical" key={musical.id} >
              
-
              <Link to={{
                pathname: `/musicals/${musical.id}`
              }}><img alt="playbill" src={musical.playbill}/></Link>     
