@@ -9,6 +9,14 @@ body {
 
 h1 {
   font-size: 50px;
+  width: max-content;
+  margin: 2% auto;
+}
+
+h1, h2, h3, h4 {
+  background-color: rgba(3, 0, 0, 0.4);
+  width: max-content;
+  margin: 2% auto;
 }
 
 h1, h2, h4, button, #input {
@@ -32,10 +40,17 @@ form {
   /* text-align: center; */
 }
 
+table, form {
+  background-color: rgba(3, 0, 0, 0.4);
+  border-radius: 25px;
+  padding: 20px;
+}
+
 table {
   text-align: center;
   margin: 0 auto;
   margin-bottom: 50px;
+  max-width: 97%;
 }
 
 td, th {

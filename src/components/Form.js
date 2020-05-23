@@ -261,6 +261,7 @@ class Form extends React.Component {
           value={this.state.photos}
           id={"photos"}
         />
+        
         <Input
           handleChange={this.handleChange}
           name={"comments"}
@@ -269,6 +270,7 @@ class Form extends React.Component {
           value={this.state.comments}
           id={"comments"}
         />
+        <div></div>
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
       </div>
