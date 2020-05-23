@@ -34,8 +34,27 @@ class Reviews extends React.Component {
     err => console.log(err))
   }
 
+  handleShowSelect = () => {
+    // add additional shows as they're added to app
+    if (this.state.currentMusical.name === "Moulin Rouge! The Musical"){
+      console.log("we want to change the background")
+      document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
+   } 
+   else {
+    document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+   }
+    }
+
+    resetBackground = () => {
+        document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+    }
+
     render(){
         return (
+            <>
+            {/* {this.state.currentMusical.name === "Moulin Rouge! The Musical" ? document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
+: null} */}
+            {this.handleShowSelect()}
             <div id="reviews_container">
            <h1>Reviews for {this.state.currentMusical.name}</h1>
 
@@ -70,9 +89,10 @@ class Reviews extends React.Component {
            
           
             <Link to="/musicals">
-            <button onClick={() => this.props.toggleMusicals()}>Back to Musicals Index</button>
+            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
             </Link>
             </div>
+            </>
         )
       }
     }

@@ -17,6 +17,16 @@ class Form extends React.Component {
     reviewer_name: ''
   };
 
+  handleShowSelect = () => {
+    // let formcontainer = document.getElementById("formcontainer")
+    if (this.props.musical.name === "Moulin Rouge! The Musical"){
+      console.log("we want to change the background")
+      document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
+   } 
+  //  else if (toShow) {
+  //    toShow.setAttribute("id", "musicals_container")
+  //  }
+    }
 
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value });
@@ -119,9 +129,13 @@ class Form extends React.Component {
     reviewer_name: ''})
   }
 
+  componentDidMount(){
+    this.handleShowSelect()
+  }
+
   render() {
     return (
-      <>
+      <div id="formcontainer">
       
       <h2>Enter your review for {this.props.musical.name}</h2>
       <form onSubmit={this.handleSubmit}>
@@ -257,7 +271,7 @@ class Form extends React.Component {
         />
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
-      </>
+      </div>
     );
   }
 }
