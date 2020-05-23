@@ -255,7 +255,7 @@ class Form extends React.Component {
           value={this.state.comments}
           id={"comments"}
         />
-        <input type="submit" value={"Add Your Review"}/>
+        <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
       </>
     );

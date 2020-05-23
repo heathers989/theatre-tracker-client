@@ -1,5 +1,23 @@
+body {
+  /* background-image: url('http://clipart-library.com/images/pTodGzK7c.jpg'); */
+  background-image: url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1, h2, h4, button, #input {
+  font-family: 'Righteous', cursive;
+}
+
 .App {
+  
   text-align: center;
+  color: whitesmoke;
+  /* background-color: rgba(3, 0, 0, 0.55); */
 }
 
 img {
@@ -56,6 +74,10 @@ input {
 
 #hide {
   display: none;
+}
+
+#musicals_container {
+  margin-top: 8%;
 }
 
 /* #comments {

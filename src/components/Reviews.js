@@ -36,12 +36,12 @@ class Reviews extends React.Component {
 
     render(){
         return (
-            <>
+            <div id="reviews_container">
            <h1>Reviews for {this.state.currentMusical.name}</h1>
 
            <table>
         <tbody key="tbody">
-        <tr>
+        <tr key="reviewheaders">
           <th>Review by:</th>
           <th>Date of performance:</th> 
           <th>Was most excited to see:</th> 
@@ -72,7 +72,7 @@ class Reviews extends React.Component {
             <Link to="/musicals">
             <button onClick={() => this.props.toggleMusicals()}>Back to Musicals Index</button>
             </Link>
-            </>
+            </div>
         )
       }
     }
