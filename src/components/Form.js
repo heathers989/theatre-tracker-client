@@ -261,6 +261,13 @@ class Form extends React.Component {
           value={this.state.photos}
           id={"photos"}
         />
+
+        {/* <textarea rows="5" cols="5" handleChange={this.handleChange}
+          name={"comments"}
+          placeholder={"any comments regarding the performance"}
+          type={"text"}
+          value={this.state.comments}
+          id={"comments"}></textarea> */}
         
         <Input
           handleChange={this.handleChange}

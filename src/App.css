@@ -97,10 +97,23 @@ input {
   margin-top: 8%;
 }
 
-/* #comments {
+#comments {
   width: 300px;
-  height: 150px;
-} */
+  /* height: 150px; */
+}
+
+form > input, #cast_to_see {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#input {
+  margin-top: 10px;
+}
+
+#photos {
+  width: 150px;
+}
 
 label {
   display: inline-block;
