@@ -41,7 +41,7 @@ form {
 }
 
 table, form {
-  background-color: rgba(3, 0, 0, 0.4);
+  background-color: rgba(3, 0, 0, 0.45);
   border-radius: 25px;
   padding: 20px;
 }

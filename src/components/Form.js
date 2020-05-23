@@ -153,6 +153,7 @@ class Form extends React.Component {
           <option value="None">--Select--</option>
           {this.props.musical.cast.map(castMember => { 
             return <option value={castMember} key={castMember}>{castMember}</option>})}
+            <option value="Other">Other</option>
         </select>
         {/* TO DO: pass selected cast member to state */}
         <Input
@@ -167,7 +168,7 @@ class Form extends React.Component {
         {/* TO DO: set radio buttons to be associated with boolean values
           if true, show understudies list
          */}
-        <label htmlFor="if_understudies">Did you see any understudies at this performance? (select all)</label><br/>
+        <label htmlFor="if_understudies">Did you see any understudies at this performance? (if so, select all)</label><br/>
         <Input onClick={this.checkUnderstudiesTrue}
           // handleChange={this.handleChange}
           name={"if_understudies"}
@@ -211,7 +212,7 @@ class Form extends React.Component {
           value={this.state.rating}
           id={"rating"}
         />
-         <label htmlFor="if_stagedoor">Did you visit the stage door after this performance? (select all cast members that signed)</label><br/>
+         <label htmlFor="if_stagedoor">Did you visit the stage door after this performance? (if so, select all cast members that signed)</label><br/>
         <Input
           onClick={this.checkStagedoorTrue}
           // handleChange={this.handleChange}
