@@ -71,7 +71,7 @@ class App extends React.Component {
     })
     .then(review => {
       review.json()
-      this.props.history.push('/musicals/1')
+      this.props.history.push(`/musicals/${musicalId}`)
     })
     this.getMusicals()
   }
