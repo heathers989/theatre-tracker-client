@@ -142,9 +142,11 @@ class Form extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <div id="formcontainer">
       
+      <div id="formcontainer">
+     <a href={"musicals/" + this.props.musical.id}>All reviews for this musical</a>
       <h2>Enter your review for {this.props.musical.name}</h2>
       <form onSubmit={this.handleSubmit}>
         <Input
@@ -289,9 +291,6 @@ class Form extends React.Component {
         <div></div>
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
-      {/* <Link to={{pathname: `/musicals/${this.props.musical.id}`}}>
-            <button onClick={() => this.props.showOne(this.props.musical)}>See reviews for this musical </button>
-            </Link> */}
       </div>
     );
   }

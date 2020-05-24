@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import Musicals from './components/Musicals.js'
 import Form from './components/Form.js'
-// import Reviews from './components/Reviews.js'
-import { Route } from 'react-router-dom'
-// import { withRouter } from "react-router";
+import Reviews from './components/Reviews.js'
+import { Route, Switch } from 'react-router-dom'
+import { withRouter } from "react-router";
 
 
 
@@ -44,7 +44,6 @@ class App extends React.Component {
    } else if (toShow) {
      toShow.setAttribute("id", "musicals_container")
    }
-    
   }
 
   handleAddReview = (event, musicalId, reviewInfo) => {
@@ -72,12 +71,11 @@ class App extends React.Component {
     })
     .then(review => {
       review.json()
-      // this.props.history.push('/musicals/1')
+      this.props.history.push('/musicals/1')
     })
     this.getMusicals()
-    alert("Your review has been added.")
   }
-
+  
 
   componentDidMount(){
     this.getMusicals()
@@ -98,13 +96,15 @@ class App extends React.Component {
     <div className="App">
       <h1>Welcome to the Theatre Tracker app!</h1>
       
-      {this.state.showMusicalsActive ? <Musicals toggleMusicals={this.toggleMusicals} musicals={this.state.musicals} showMusicals={this.showMusicals}/>
-       : <Route path="/form" render={(props) => {
+      <Switch>
+      <Route exact path="/" render={() => <Musicals toggleMusicals={this.toggleMusicals} musicals={this.state.musicals} showMusicals={this.showMusicals}/>}/>
+        <Route path="/form" render={(props) => {
          return (
            <Form {...props} handleSubmit={this.handleAddReview} musical={this.state.musical}/>
          )
-         }} /> }
-
+         }} />
+         <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={this.toggleMusicals} toggleMusicalsNow={this.toggleMusicals()}/>}/>
+          </Switch>
        
 
      
@@ -113,4 +113,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

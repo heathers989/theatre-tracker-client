@@ -56,6 +56,7 @@ class Reviews extends React.Component {
     }
 
     render(){
+        console.log(this.state.currentMusical)
         return (
             <>
             

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Reviews from './Reviews.js'
-import { Route } from 'react-router-dom'
+// import Reviews from './Reviews.js'
+// import { Route } from 'react-router-dom'
 
 function Musicals(props) {
-  let {musicals, showMusicals, toggleMusicals} = props;
+  let {musicals, showMusicals} = props;
 
   // console.log("passing props in musicals component", props)
 
@@ -30,7 +30,7 @@ function Musicals(props) {
     ))}
           </div>
         </div>
-        <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals} toggleMusicalsNow={toggleMusicals()} musicals={musicals}/>}/>
+        {/* <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals} toggleMusicalsNow={toggleMusicals()} musicals={musicals}/>}/> */}
       </>
     )
   }
