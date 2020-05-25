@@ -1,6 +1,7 @@
 body {
   /* background-image: url('http://clipart-library.com/images/pTodGzK7c.jpg'); */
-  background-image: url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg');
+  /* background-image: url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg'); */
+  background-image: url("./backdrop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Arvo', serif;
@@ -38,6 +39,14 @@ form {
   margin: 0 auto;
   width: 37%;
   /* text-align: center; */
+}
+
+.indexbutton {
+  font-size: small;
+}
+
+button {
+  font-size: medium;
 }
 
 table, form {
@@ -93,8 +102,18 @@ input {
   display: none;
 }
 
+a {
+  color: white;
+}
+
+button {
+  background-color: black;
+  color: white;
+}
+
 #musicals_container {
-  margin-top: 8%;
+  margin-top: 4%;
+  /* padding-bottom: 300px; */
 }
 
 #comments {

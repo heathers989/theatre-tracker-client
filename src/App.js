@@ -5,7 +5,7 @@ import Form from './components/Form.js'
 import Reviews from './components/Reviews.js'
 import { Route, Switch } from 'react-router-dom'
 import { withRouter } from "react-router";
-
+// import backdrop from "./backdrop.jpg"
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -30,10 +30,6 @@ class App extends React.Component {
       // , getEditUserActive: false
     }) 
   }
-
-  // showOne = (musical) => {
-  //   this.setState({currentMusical: musical})
-  // }
 
   toggleMusicals = () => {
     //hides musicals index component
@@ -75,6 +71,10 @@ class App extends React.Component {
     })
     this.getMusicals()
   }
+
+  resetBackground = () => {
+    document.body.style.backgroundImage = "url('./backdrop.jpg')"
+}
   
 
   componentDidMount(){
@@ -90,6 +90,7 @@ class App extends React.Component {
     console.log("get musicals is running"),
     err => console.log(err))
   }
+
   render(){
     // console.log("add review is running", this.props)
   return (

@@ -27,13 +27,13 @@ class Form extends React.Component {
     // console.log("we want to change the background")
     document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
  } else {
-    document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+    document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
    }
     }
 
   resetBackground = () => {
     //sets background image to default
-      document.body.style.backgroundImage = "url('https://cdn3.vectorstock.com/i/1000x1000/29/82/red-open-curtain-with-wood-floor-in-theater-velve-vector-21932982.jpg')"
+      document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
   }
 
   handleChange = (event) => {
@@ -142,11 +142,12 @@ class Form extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       
       <div id="formcontainer">
-     <a href={"musicals/" + this.props.musical.id}>All reviews for this musical</a>
+        <a href={"musicals/" + this.props.musical.id}> <button>All reviews for this musical</button></a>
+    
       <h2>Enter your review for {this.props.musical.name}</h2>
       <form onSubmit={this.handleSubmit}>
         <Input

@@ -22,7 +22,7 @@ function Musicals(props) {
              }}><img alt="playbill" src={musical.playbill}/></Link>     
       <br/>
       {/* use react router to have button bring up review form */}
-      <button onClick={() => showMusicals(musical)}>
+      <button className="indexbutton" onClick={() => showMusicals(musical)}>
         <Link to="/form">Add Review for {musical.name}</Link>
         </button>
 </div>
@@ -30,7 +30,6 @@ function Musicals(props) {
     ))}
           </div>
         </div>
-        {/* <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={toggleMusicals} toggleMusicalsNow={toggleMusicals()} musicals={musicals}/>}/> */}
       </>
     )
   }
