@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "./Input.js";
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Form extends React.Component {
   stageDoorCast = this.props.musical.cast.concat(this.props.musical.understudies)
@@ -23,6 +23,19 @@ class Form extends React.Component {
     if (this.props.musical.name === "Moulin Rouge! The Musical"){
       // console.log("we want to change the background")
       document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
+      let mrImg1 = document.getElementById("img1")
+      let mrImg2 = document.getElementById("img2")
+      let mrImg3 = document.getElementById("img3")
+      let mrImg4 = document.getElementById("img4")
+      let mrImg5 = document.getElementById("img5")
+      let mrImg6 = document.getElementById("img6")
+      mrImg1.setAttribute("id", "mrimg1")
+      mrImg2.setAttribute("id", "mrimg2")
+      mrImg3.setAttribute("id", "mrimg3")
+      mrImg4.setAttribute("id", "mrimg4")
+      mrImg5.setAttribute("id", "mrimg5")
+      mrImg6.setAttribute("id", "mrimg6")
+
    } else if (this.props.musical.name === "Waitress"){
     // console.log("we want to change the background")
     document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
@@ -146,9 +159,20 @@ class Form extends React.Component {
     return (
       
       <div id="formcontainer">
+         <div id="leftimgcontainer">
+        <div className="asideimg" id="img1"></div>
+        <div className="asideimg" id="img2"></div>
+        <div className="asideimg" id="img3"></div>
+      </div>
+      <div id="rightimgcontainer">
+        <div className="asideimg" id="img4"></div>
+        <div className="asideimg" id="img5"></div>
+        <div className="asideimg" id="img6"></div>
+      </div>
         <a href={"musicals/" + this.props.musical.id}> <button>All reviews for this musical</button></a>
     
       <h2>Enter your review for {this.props.musical.name}</h2>
+     
       <form onSubmit={this.handleSubmit}>
         <Input
           handleChange={this.handleChange}
@@ -292,6 +316,10 @@ class Form extends React.Component {
         <div></div>
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
+      
+      <Link to="/">
+            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
+            </Link>
       </div>
     );
   }

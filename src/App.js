@@ -101,7 +101,7 @@ class App extends React.Component {
       <Route exact path="/" render={() => <Musicals toggleMusicals={this.toggleMusicals} musicals={this.state.musicals} showMusicals={this.showMusicals}/>}/>
         <Route path="/form" render={(props) => {
          return (
-           <Form {...props} handleSubmit={this.handleAddReview} musical={this.state.musical}/>
+           <Form {...props} handleSubmit={this.handleAddReview} toggleMusicals={this.toggleMusicals} musical={this.state.musical}/>
          )
          }} />
          <Route path="/musicals/:id" exact render={(props) => <Reviews {...props} toggleMusicals={this.toggleMusicals} toggleMusicalsNow={this.toggleMusicals()}/>}/>

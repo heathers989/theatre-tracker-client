@@ -19,7 +19,7 @@ function Musicals(props) {
              
              <Link to={{
                pathname: `/musicals/${musical.id}`
-             }}><img alt="playbill" src={musical.playbill}/></Link>     
+             }}><img className="indeximg" alt="playbill" src={musical.playbill}/></Link>     
       <br/>
       {/* use react router to have button bring up review form */}
       <button className="indexbutton" onClick={() => showMusicals(musical)}>
