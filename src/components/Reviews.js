@@ -44,7 +44,7 @@ class Reviews extends React.Component {
       document.body.style.backgroundImage = "url('https://i0.wp.com/newyorktheater.me/wp-content/uploads/2019/07/Moulin-Rouge-set.jpg?fit=1951%2C1301&ssl=1')"
    } else if (this.state.currentMusical.name === "Waitress"){
     // console.log("we want to change the background")
-    document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
+    document.body.style.backgroundImage = "url('/img/waitress_backdrop.png')"
  }
    else {
     document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
@@ -84,9 +84,9 @@ class Reviews extends React.Component {
                    <td>{review.date_of_show}</td>
                    <td>{review.cast_to_see}</td>
                    <td>{review.understudies_seen.map(understudy => (<div>{understudy}</div>))}</td>
-                   <td>{review.rating}</td>
+                   <td>{review.rating} out of 5</td>
                    <td>{review.at_stagedoor.map(castMember => (<div>{castMember}</div>))}</td>
-                   <td> {review.photos ? <img src={review.photos} alt="Moulin Rouge review"/> : null}</td>
+                   <td> {review.photos ? <a href={review.photos} target="_blank" rel="noopener noreferrer"><img id="reviewphoto" src={review.photos} alt="Moulin Rouge review"/></a> : null}</td>
                    <td id="comments">{review.comments}</td>
 
                </tr>

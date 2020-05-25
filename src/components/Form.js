@@ -39,7 +39,7 @@ class Form extends React.Component {
 
    } else if (this.props.musical.name === "Waitress"){
     // console.log("we want to change the background")
-    document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
+    document.body.style.backgroundImage = "url('/img/waitress_backdrop.png')"
 
       let waitImg1 = document.getElementById("img1")
       let waitImg2 = document.getElementById("img2")

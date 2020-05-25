@@ -39,6 +39,10 @@ a {
   height: 180px;
 }
 
+#reviewphoto {
+  height: 200px;
+}
+
 #leftimgcontainer {
   margin-left: 5%;
   float: left;
