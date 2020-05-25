@@ -1,7 +1,7 @@
 body {
   /* background-image: url('http://clipart-library.com/images/pTodGzK7c.jpg'); */
   /* background-image: url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg'); */
-  background-image: url("./backdrop.jpg");
+  background-image: url("/img/backdrop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Arvo', serif;
@@ -52,7 +52,7 @@ a {
 }
 
 .asideimg {
-  width: 285px;
+  width: 290px;
   height: 250px;
   /* border: whitesmoke 1px solid; */
   background-size: cover;
@@ -87,6 +87,30 @@ a {
 #mrimg6 {
   background-image: url("https://todaytix.imgix.net/prod_1557420700093_MR_014_PA_TODAY_TIX_ASSETS_051019_1600x1200_2.jpg");
   
+}
+
+#waitimg1 {
+  background-image: url('https://www.waitressthemusical.co.uk/static/dc690e1b439f30f2aa10dacf97e22bd4/6aab9/header-about-sm.jpg');
+}
+
+#waitimg2 {
+  background-image: url('https://www.boulderweekly.com/wp-content/uploads/2017/12/AC-Credit-Joan-Marcus.jpg');
+}
+
+#waitimg3 {
+  background-image: url('https://media.npr.org/assets/img/2015/08/18/0291_150801_artwaitressdress-d3a3bfa6b4035750f69e1caaed11537a42d8e911-s800-c85.jpg');
+}
+
+#waitimg4 {
+  background-image: url('https://1tlmo92ipsnm1fchmn35l7xz-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/Jessie-Shelton-and-Jeremy-Morse-in-the-National-Tour-of-Waitress-Credit-Philicia-Endelman-DSC_1028-1024x683.jpg');
+}
+
+#waitimg5 {
+  background-image: url('https://www.whatsonstage.com/s/wos-photos-production/128964.jpg');
+}
+
+#waitimg6 {
+  background-image: url('https://lh3.googleusercontent.com/proxy/k6o5HhrkZ2ATW95KezI8iW4aGYjABFrM9KNSrwl8XT7QR05IGnP8bVtpV85wx4rQZkWLff_ZtFdA4AebbiW-zuvmFoE-SmyauVgVNipqpcby5w1D7X-awfn8Pl0Lpb6wodu5qtEv');
 }
 
 form {

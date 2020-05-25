@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./Input.js";
+// import Textarea from "./Textarea.js"
 import { Link } from 'react-router-dom'
 
 class Form extends React.Component {
@@ -39,6 +40,19 @@ class Form extends React.Component {
    } else if (this.props.musical.name === "Waitress"){
     // console.log("we want to change the background")
     document.body.style.backgroundImage = "url('https://harborlight.hinghamschools.com/wp-content/uploads/2018/02/A-picture-of-the-stage-of-Waitress-at-the-Boston-Opera-House-taken-by-the-author-of-this-article-Meaghan-Burke.-900x675.jpeg')"
+
+      let waitImg1 = document.getElementById("img1")
+      let waitImg2 = document.getElementById("img2")
+      let waitImg3 = document.getElementById("img3")
+      let waitImg4 = document.getElementById("img4")
+      let waitImg5 = document.getElementById("img5")
+      let waitImg6 = document.getElementById("img6")
+      waitImg1.setAttribute("id", "waitimg1")
+      waitImg2.setAttribute("id", "waitimg2")
+      waitImg3.setAttribute("id", "waitimg3")
+      waitImg4.setAttribute("id", "waitimg4")
+      waitImg5.setAttribute("id", "waitimg5")
+      waitImg6.setAttribute("id", "waitimg6")
  } else {
     document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
    }
@@ -46,7 +60,8 @@ class Form extends React.Component {
 
   resetBackground = () => {
     //sets background image to default
-      document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+      // document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+      document.body.style.backgroundImage = "url('/img/backdrop.jpg')"
   }
 
   handleChange = (event) => {
@@ -190,7 +205,6 @@ class Form extends React.Component {
             return <option value={castMember} key={castMember}>{castMember}</option>})}
             <option value="Other">Other</option>
         </select>
-        {/* TO DO: pass selected cast member to state */}
         <Input
           handleChange={this.handleChange}
           name={"date_of_show"}
@@ -199,10 +213,6 @@ class Form extends React.Component {
           value={this.state.date_of_show}
           id={"date_of_show"}
         />
-       
-        {/* TO DO: set radio buttons to be associated with boolean values
-          if true, show understudies list
-         */}
         <label htmlFor="if_understudies">Did you see any understudies at this performance? (if so, select all)</label><br/>
         <Input onClick={this.checkUnderstudiesTrue}
           // handleChange={this.handleChange}
@@ -236,7 +246,6 @@ class Form extends React.Component {
           id={"understudy"+index}
         /> 
           }) : <div></div>}
-         {/* TO DO: push selected cast members to state */}
          <div></div>
            
           <Input
@@ -267,8 +276,6 @@ class Form extends React.Component {
           id={"if_stagedoor"}
         />
         <div></div>
-
-          {/* TO DO: add checked boxes to state  */}
       {this.state.if_stagedoor === true ? 
       
        this.stageDoorCast.map((sdCastMember, index) => { 
@@ -298,21 +305,21 @@ class Form extends React.Component {
           id={"photos"}
         />
 
-        {/* <textarea rows="5" cols="5" handleChange={this.handleChange}
+        <textarea rows="5" cols="5" onChange={this.handleChange}
           name={"comments"}
           placeholder={"any comments regarding the performance"}
           type={"text"}
           value={this.state.comments}
-          id={"comments"}></textarea> */}
+          id={"comments"}></textarea>
         
-        <Input
+        {/* <Input
           handleChange={this.handleChange}
           name={"comments"}
           placeholder={"any comments regarding the performance"}
           type={"text"}
           value={this.state.comments}
           id={"comments"}
-        />
+        /> */}
         <div></div>
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>

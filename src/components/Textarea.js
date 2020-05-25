@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = props => {
+const Textarea = props => {
   const {handleChange, name, className, placeholder, title, type, value, accept, onClick} = props
     return (
       <>
@@ -20,4 +20,4 @@ const Input = props => {
     )
 }
 
-export default Input
+export default Textarea

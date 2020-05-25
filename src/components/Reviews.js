@@ -52,7 +52,8 @@ class Reviews extends React.Component {
     }
 
     resetBackground = () => {
-        document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+        // document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+        document.body.style.backgroundImage = "url('/img/backdrop.jpg')"
     }
 
     render(){
@@ -85,7 +86,7 @@ class Reviews extends React.Component {
                    <td>{review.understudies_seen.map(understudy => (<div>{understudy}</div>))}</td>
                    <td>{review.rating}</td>
                    <td>{review.at_stagedoor.map(castMember => (<div>{castMember}</div>))}</td>
-                   <td>{review.photos}</td>
+                   <td> {review.photos ? <img src={review.photos} alt="Moulin Rouge review"/> : null}</td>
                    <td id="comments">{review.comments}</td>
 
                </tr>

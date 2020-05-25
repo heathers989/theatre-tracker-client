@@ -11,7 +11,7 @@ function Musicals(props) {
     return (
       <>
       <div id="musicals_container">
-      <h4>Click the playbill of any show you'd like to read reviews for.</h4>
+      <h4>Click the playbill of any show you'd like to read reviews for. Click the corresponding button to add a review.</h4>
         <div className="musicalsindex">
         
     {musicals.map(musical => (
