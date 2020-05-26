@@ -45,9 +45,10 @@ class Reviews extends React.Component {
    } else if (this.state.currentMusical.name === "Waitress"){
     // console.log("we want to change the background")
     document.body.style.backgroundImage = "url('/img/waitress_backdrop.png')"
- }
-   else {
-    document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+ }else if (this.state.currentMusical.name === "Pretty Woman the Musical") {
+    document.body.style.backgroundImage = "url('/img/pretty_woman_backdrop.png')"
+ } else {
+    document.body.style.backgroundImage = "url('/img/backdrop.jpg')"
    }
     }
 
@@ -63,6 +64,9 @@ class Reviews extends React.Component {
             
             {this.handleShowSelect()}
             <div id="reviews_container">
+            <Link to="/">
+            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
+            </Link>
            <h2>Reviews for {this.state.currentMusical.name}</h2>
             <h2>{this.state.currentMusical.theater}</h2>
 
@@ -94,11 +98,6 @@ class Reviews extends React.Component {
            ))}
     </tbody>
     </table>
-           
-          
-            <Link to="/">
-            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
-            </Link>
             </div>
             </>
         )

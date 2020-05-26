@@ -117,6 +117,34 @@ a {
   background-image: url('https://lh3.googleusercontent.com/proxy/k6o5HhrkZ2ATW95KezI8iW4aGYjABFrM9KNSrwl8XT7QR05IGnP8bVtpV85wx4rQZkWLff_ZtFdA4AebbiW-zuvmFoE-SmyauVgVNipqpcby5w1D7X-awfn8Pl0Lpb6wodu5qtEv');
 }
 
+#pwimg1 {
+  background-image: url('https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1047&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2Fpretty-women-the-musical-21-2000.jpg');
+}
+
+#pwimg2 {
+  background-image: url('https://www.kv2audio.com/files/kv2audio/images/page/1260x1260-1539848094-03-pretty-woman-musical-2018-72dpi.jpg');
+}
+
+#pwimg3 {
+  background-image: url('https://imaging.broadway.com/images/custom/w1200/101989-16.jpg');
+}
+
+#pwimg4 {
+  background-image: url('https://www.kv2audio.com/files/kv2audio/images/page/1260x1260-1539848093-02-pretty-woman-musical-2018-72dpi.jpg');
+}
+
+#pwimg5 {
+  background-image: url('https://www.kv2audio.com/files/kv2audio/images/page/1260x1260-1539848097-05-pretty-woman-musical-2018-72dpi.jpg');
+}
+
+#pwimg6 {
+  background-image: url('https://media.newyorker.com/photos/5b74a24202bc842c940b85d9/master/pass/Schulman-PrettyWomanBroadway.jpg');
+}
+
+#allreviews {
+  margin-right: 10px;
+}
+
 form {
   margin: 0 auto;
   width: 37%;

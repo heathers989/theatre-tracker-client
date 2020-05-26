@@ -53,8 +53,22 @@ class Form extends React.Component {
       waitImg4.setAttribute("id", "waitimg4")
       waitImg5.setAttribute("id", "waitimg5")
       waitImg6.setAttribute("id", "waitimg6")
- } else {
-    document.body.style.backgroundImage = "url('http://followtheart.info/dld.php?w=2560&h=1440&img=https://cdn.wallpapersafari.com/85/16/pLEhwO.jpg')"
+ } else if (this.props.musical.name === "Pretty Woman the Musical") {
+  document.body.style.backgroundImage = "url('/img/pretty_woman_backdrop.png')"
+  let pwImg1 = document.getElementById("img1")
+  let pwImg2 = document.getElementById("img2")
+  let pwImg3 = document.getElementById("img3")
+  let pwImg4 = document.getElementById("img4")
+  let pwImg5 = document.getElementById("img5")
+  let pwImg6 = document.getElementById("img6")
+  pwImg1.setAttribute("id", "pwimg1")
+  pwImg2.setAttribute("id", "pwimg2")
+  pwImg3.setAttribute("id", "pwimg3")
+  pwImg4.setAttribute("id", "pwimg4")
+  pwImg5.setAttribute("id", "pwimg5")
+  pwImg6.setAttribute("id", "pwimg6")
+ }else {
+    document.body.style.backgroundImage = "url('/img/backdrop.jpg')"
    }
     }
 
@@ -184,7 +198,10 @@ class Form extends React.Component {
         <div className="asideimg" id="img5"></div>
         <div className="asideimg" id="img6"></div>
       </div>
-        <a href={"musicals/" + this.props.musical.id}> <button>All reviews for this musical</button></a>
+        <a href={"musicals/" + this.props.musical.id}> <button id="allreviews">All reviews for this musical</button></a>
+        <Link to="/">
+            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
+            </Link>
     
       <h2>Enter your review for {this.props.musical.name}</h2>
      
@@ -324,9 +341,6 @@ class Form extends React.Component {
         <input id="input" type="submit" value={"Add Your Review"}/>
       </form>
       
-      <Link to="/">
-            <button onClick={() => {this.props.toggleMusicals(); this.resetBackground()}}>Back to Musicals Index</button>
-            </Link>
       </div>
     );
   }
