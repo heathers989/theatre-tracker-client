@@ -250,7 +250,7 @@ class Form extends React.Component {
         />
       <div></div>
       {this.state.if_understudies === true ? 
-      this.props.musical.understudies.map((understudy, index) => { 
+      <div id="understudies-container">{this.props.musical.understudies.map((understudy, index) => { 
           return <Input
           // handleChange={this.handleChange}
           onClick={() => this.addRemoveUnderstudy(understudy, index)}
@@ -262,7 +262,7 @@ class Form extends React.Component {
           value={this.state.understudies_seen}
           id={"understudy"+index}
         /> 
-          }) : <div></div>}
+          })} </div>: <div></div>}
          <div></div>
            
           <Input
@@ -294,8 +294,8 @@ class Form extends React.Component {
         />
         <div></div>
       {this.state.if_stagedoor === true ? 
-      
-       this.stageDoorCast.map((sdCastMember, index) => { 
+      <div id="stagedoor-container">
+       {this.stageDoorCast.map((sdCastMember, index) => { 
          return <Input
              // handleChange={this.handleChange}
              onClick={() => this.addRemoveStageDoor(sdCastMember, index)}
@@ -307,7 +307,7 @@ class Form extends React.Component {
              value={this.state.at_stagedoor}
              id={"stagedoor"+index}
            /> 
-        })
+        })} </div>
 
           : <div></div> }
         
