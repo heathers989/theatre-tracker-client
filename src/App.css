@@ -216,6 +216,11 @@ input {
   width: 150px;
 }
 
+#cast_to_see {
+  color: black;
+  background-color: white;
+}
+
 #hide {
   display: none;
 }
