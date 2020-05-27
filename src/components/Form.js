@@ -231,7 +231,7 @@ class Form extends React.Component {
         <Input
           handleChange={this.handleChange}
           name={"date_of_show"}
-          placeholder={"Date of show (yyyy-mm-dd)"}
+          placeholder={"Date of show (mm-dd-yyyy)"}
           type={"text"}
           value={this.state.date_of_show}
           id={"date_of_show"}
