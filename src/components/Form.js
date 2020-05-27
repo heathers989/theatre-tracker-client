@@ -83,6 +83,12 @@ class Form extends React.Component {
     console.log(this.state)
   };
 
+  // handleUploadChange = (event) => {
+  //   this.setState({
+  //     photos: event.target.files[0]
+  //   })
+  // }
+
   checkUnderstudiesTrue = () => {
     console.log("saw understudies")
       this.setState({if_understudies: true })

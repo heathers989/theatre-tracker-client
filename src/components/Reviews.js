@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 
 class Reviews extends React.Component {
-    // musicalId = (this.props.match.params.id);
+
 
     state = {
         currentMusical: {},
@@ -24,8 +25,51 @@ class Reviews extends React.Component {
         this.getMusical()
     }
 
-    // componentDidUpdate(){
-    //     this.getMusical()
+    // handleDelete = (deletedReview, id) => {
+    //   fetch(`${baseURL}/musicals/${id}/reviews/${deletedReview.id}`, {
+    //     method: "DELETE",
+    //     headers: {
+    //       Accept: "application/json, text/plain, */*",
+    //       "Content-Type": "application/json",
+    //     },
+    //   })
+    //     .then((json) => {
+    //       const reviews = this.state.reviews.filter(
+    //         (review) => review.id !== deletedReview.id
+    //       );
+    //       this.setState({ reviews });
+    //     })
+    //     .catch((error) => console.log(error));
+    // };
+
+    // handleUpdate = (event, id, formInputs) => {
+    //   event.preventDefault()
+    //   console.log('in it to win it')
+    //   fetch(`${baseURL}musicals/${id}/reviews/${formInputs.id}`, {
+    //     body: JSON.stringify(
+    //       {show_seen: reviewInfo.show_seen,
+    //          cast_to_see: reviewInfo.cast_to_see,
+    //          date_of_show: reviewInfo.date_of_show,
+    //          if_understudies: reviewInfo.if_understudies,
+    //          understudies_seen: "," + reviewInfo.understudies_seen + ",",
+    //          rating: reviewInfo.rating,
+    //          if_stagedoor: reviewInfo.if_stagedoor,
+    //          at_stagedoor: "," + reviewInfo.at_stagedoor + ",",
+    //          photos: reviewInfo.photos,
+    //          comments: reviewInfo.comments,
+    //          reviewer_name: reviewInfo.reviewer_name
+    //       }),
+    //     method: 'PUT',
+    //     headers: {
+    //    'Accept': 'application/json, text/plain, */*',
+    //    'Content-Type': 'application/json'
+    //  }
+    // })
+    //  .then(updatedReview => {
+    //    // go wild
+    //    this.getMusical()
+    //  })
+    //  .catch(error => console.log(error))
     // }
 
  getMusical () {
@@ -81,17 +125,20 @@ class Reviews extends React.Component {
           <th>Cast members seen at stage door (if any):</th> 
           <th>Photos:</th> 
           <th>Comments:</th> 
+          <th>Delete:</th>
          </tr> 
          {this.state.reviews.map(review => (
                <tr key={review.id}>
                    <td>{review.reviewer_name}</td>
-                   <td>{review.date_of_show}</td>
+                   <td>{moment(review.date_of_show).format('MM-DD-YYYY')}</td>
                    <td>{review.cast_to_see}</td>
-                   <td>{review.understudies_seen.map(understudy => (<div>{understudy}</div>))}</td>
+                   <td>{review.understudies_seen.map(understudy => (<div key={understudy}>{understudy}</div>))}</td>
                    <td>{review.rating} out of 5</td>
-                   <td>{review.at_stagedoor.map(castMember => (<div>{castMember}</div>))}</td>
+                   <td>{review.at_stagedoor.map(castMember => (<div key={castMember}>{castMember}</div>))}</td>
                    <td> {review.photos ? <a href={review.photos} target="_blank" rel="noopener noreferrer"><img id="reviewphoto" src={review.photos} alt="Moulin Rouge review"/></a> : null}</td>
                    <td id="comments">{review.comments}</td>
+                   {/* <td><button onClick={() => this.handleUpdate(review, this.state.currentMusical.id)}>Edit</button></td>
+                   <td><button onClick={() => this.handleDelete(review, this.state.currentMusical.id)}>Delete</button></td> */}
 
                </tr>
 
