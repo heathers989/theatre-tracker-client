@@ -6,11 +6,11 @@ import moment from 'moment'
 let baseURL = process.env.REACT_APP_BASEURL
 
 
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3000'
-} else {
-  baseURL = 'https://theatre-tracker-api.herokuapp.com/'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   baseURL = 'http://localhost:3000'
+// } else {
+//   baseURL = 'https://theatre-tracker-api.herokuapp.com'
+// }
 
 
 class Reviews extends React.Component {
@@ -125,7 +125,7 @@ class Reviews extends React.Component {
           <th>Cast members seen at stage door (if any):</th> 
           <th>Photos:</th> 
           <th>Comments:</th> 
-          <th>Delete:</th>
+          {/* <th>Delete:</th> */}
          </tr> 
          {this.state.reviews.map(review => (
                <tr key={review.id}>

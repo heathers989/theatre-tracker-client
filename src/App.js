@@ -11,11 +11,11 @@ import { withRouter } from "react-router";
 let baseURL = process.env.REACT_APP_BASEURL
 
 
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3000'
-} else {
-  baseURL = 'https://theatre-tracker-api.herokuapp.com/'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   baseURL = 'http://localhost:3000'
+// } else {
+//   baseURL = 'https://theatre-tracker-api.herokuapp.com'
+// }
 
 class App extends React.Component {
   state = {
